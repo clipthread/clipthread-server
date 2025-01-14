@@ -1,0 +1,14 @@
+[Unit]
+Description=ClipThreadServer
+After=graphical.target
+
+[Service]
+Type=simple
+User=lcances
+Group=lcances
+ExecStart=/home/lcances/Documents/Perso/python/clipthread/run_table_ui.sh
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=graphical.target
