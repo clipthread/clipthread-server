@@ -5,12 +5,11 @@ from typing import Optional
 from clipthread.core.models import ClipboardCreate, ClipboardUpdate, Clipboard
 from clipthread.core.db import ClipboardHandler
 from clipthread.core.utils import get_working_dir
-
-DATABASE_PATH = os.path.join(get_working_dir(), "database.db")
+from clipthread.server.config import Config
 
 
 router = APIRouter()
-clipboard_handler = ClipboardHandler(DATABASE_PATH)
+clipboard_handler = ClipboardHandler(Config.DATABASE_URL)
 
 @router.post("/", response_model=Clipboard)
 def create_clipboard(clip: ClipboardCreate) -> Clipboard:
