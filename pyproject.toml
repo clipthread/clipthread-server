@@ -29,6 +29,7 @@ dependencies = [
     "cryptography ~= 44.0.0",
     "requests ~= 2.32.3",
     "httpx ~= 0.28.1",
+    "clipthread-core ~= 0.0.2",
 ]
 
 [project.optional-dependencies]
