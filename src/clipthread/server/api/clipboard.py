@@ -1,11 +1,16 @@
+import os
 from fastapi import APIRouter, HTTPException
 from typing import Optional
 
 from clipthread.server.models.schemas import ClipboardCreate, ClipboardUpdate, Clipboard
 from clipthread.core.db import ClipboardHandler
+from clipthread.core.utils import get_working_dir
+
+DATABASE_PATH = os.path.join(get_working_dir(), "database.db")
+
 
 router = APIRouter()
-clipboard_handler = ClipboardHandler("database.db")
+clipboard_handler = ClipboardHandler(DATABASE_PATH)
 
 @router.post("/", response_model=Clipboard)
 def create_clipboard(clip: ClipboardCreate) -> Clipboard:
