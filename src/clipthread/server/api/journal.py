@@ -2,9 +2,10 @@ from fastapi import APIRouter, HTTPException
 
 from clipthread.core.models import JournalCreate, JournalUpdate, Journal
 from clipthread.core.db import JournalHandler
+from clipthread.server.config import Config
 
 router = APIRouter()
-journal_handler = JournalHandler("database.db")
+journal_handler = JournalHandler(Config.DATABASE_URL)
 
 @router.post("/", response_model=Journal)
 def create_journal(journal: JournalCreate):
