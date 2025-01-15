@@ -19,6 +19,12 @@ def read_clipboard(clip_id: str):
         raise HTTPException(status_code=404, detail="Clipboard entry not found")
     return result
 
+@router.get("/", response_model=list[Clipboard])
+def read_all_clipboard(limit: Optional[int] = None):
+    result = clipboard_handler.read_all(limit=limit)
+    # Ensure result is always a list
+    return result if isinstance(result, list) else [result]
+
 @router.put("/{clip_id}", response_model=Clipboard)
 def update_clipboard(clip_id: str, clip: ClipboardUpdate):
     success = clipboard_handler.update(
@@ -36,3 +42,8 @@ def delete_clipboard(clip_id: str):
     if not success:
         raise HTTPException(status_code=404, detail="Clipboard entry not found")
     return {"message": "Clipboard entry deleted"}
+
+@router.delete("/")
+def clear_clipboard():
+    clipboard_handler.clear()
+    return {"message": "Clipboard cleared"}
