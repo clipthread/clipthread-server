@@ -2,7 +2,7 @@ import requests
 import time
 from typing import Optional, List, Callable
 from functools import wraps
-from clipthread.server.models.schemas import Clipboard, ClipboardBase, ClipboardCreate, ClipboardUpdate
+from clipthread.core.models import Clipboard
 
 def retry_with_backoff(retries: int = 5, backoff_in_seconds: int = 1):
     def decorator(func: Callable):
