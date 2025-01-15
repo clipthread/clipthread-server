@@ -3,7 +3,7 @@ import os
 import pytest
 from fastapi.testclient import TestClient
 
-from src.clipthread.server.main import app
+from clipthread.server.main import app
 
 @pytest.fixture
 def client():
