@@ -1,6 +1,6 @@
 from fastapi import APIRouter, HTTPException
 
-from clipthread.server.models.schemas import JournalCreate, JournalUpdate, Journal
+from clipthread.core.models import JournalCreate, JournalUpdate, Journal
 from clipthread.core.db import JournalHandler
 
 router = APIRouter()

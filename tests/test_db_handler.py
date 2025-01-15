@@ -20,16 +20,16 @@ class TestDatabaseHandlers(unittest.TestCase):
         # Read
         clip = self.clipboard_handler.read(clip_id)
         self.assertIsNotNone(clip)
-        self.assertEqual(clip["text"], "test clip")
-        self.assertEqual(clip["pinned"], False)
+        self.assertEqual(clip.text, "test clip")
+        self.assertEqual(clip.pinned, False)
 
         # Update
         updated = self.clipboard_handler.update(clip_id, text="updated clip", pinned=True)
         self.assertTrue(updated)
         
         updated_clip = self.clipboard_handler.read(clip_id)
-        self.assertEqual(updated_clip["text"], "updated clip")
-        self.assertEqual(updated_clip["pinned"], True)
+        self.assertEqual(updated_clip.text, "updated clip")
+        self.assertEqual(updated_clip.pinned, True)
 
         # Delete
         deleted = self.clipboard_handler.delete(clip_id)

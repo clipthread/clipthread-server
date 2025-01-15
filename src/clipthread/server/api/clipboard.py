@@ -2,7 +2,7 @@ import os
 from fastapi import APIRouter, HTTPException
 from typing import Optional
 
-from clipthread.server.models.schemas import ClipboardCreate, ClipboardUpdate, Clipboard
+from clipthread.core.models import ClipboardCreate, ClipboardUpdate, Clipboard
 from clipthread.core.db import ClipboardHandler
 from clipthread.core.utils import get_working_dir
 
