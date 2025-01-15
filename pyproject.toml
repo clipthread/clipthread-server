@@ -46,9 +46,6 @@ Repository = "https://github.com/clipthread/clipthrea-serverd.git"
 Documentation = "https://github.com/clipthread/clipthread-server#readme"
 "Bug Tracker" = "https://github.com/clipthread/clipthread-server/issues"
 
-[tool.hatch.build.targets.copy]
-packages = ["clipthread-server.service"]
-
 [tool.hatch.build.targets.wheel]
 packages = ["src/clipthread"]
 
