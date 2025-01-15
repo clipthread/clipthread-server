@@ -21,3 +21,7 @@ def start_server():
     
     args = parser.parse_args()
     uvicorn.run(app, host=args.host, port=args.port)
+
+def _start_server(host: str, port: int):
+    import uvicorn
+    uvicorn.run(app, host=host, port=port)

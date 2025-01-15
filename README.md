@@ -1,70 +1,56 @@
 # ClipThread Server
 
-ClipThread is a FastAPI application designed to synchronize clipboard data between different machines. It provides endpoints for managing clipboard entries and journal entries, allowing users to fetch and add data seamlessly.
+ClipThread is a multi-platform clipboard synchronization tool that enables real-time sharing of clipboard content across different devices. It uses a client-server architecture to maintain clipboard history and ensure secure synchronization between multiple devices.
 
-## Features
+## Purpose
+The ClipThread server acts as the central hub for all clipboard operations. It:
+- Manages clipboard content synchronization between connected clients 
+- Maintains a clipboard history journal
+- Handles secure data transmission between devices
+- Provides REST API endpoints for clipboard operations
 
-- Synchronize clipboard data across devices.
-- Add, fetch, update, and delete journal entries.
-- Easy-to-use API with FastAPI.
+## Running the Server
 
-## Project Structure
-
-```
-clipthread-server
-├── src
-│   ├── api
-│   │   ├── __init__.py
-│   │   ├── clipboard.py
-│   │   └── journal.py
-│   ├── core
-│   │   ├── __init__.py
-│   │   └── config.py
-│   ├── db
-│   │   ├── __init__.py
-│   │   └── handlers.py
-│   ├── models
-│   │   ├── __init__.py
-│   │   └── schemas.py
-│   └── main.py
-├── tests
-│   ├── __init__.py
-│   ├── test_clipboard.py
-│   └── test_journal.py
-├── requirements.txt
-├── .env
-└── README.md
-```
-
-## Installation
-
-1. Clone the repository:
-   ```bash
-   git clone <repository-url>
-   cd clipthread-server
-   ```
-
-2. Install the dependencies:
-   ```bash
-   pip install -r requirements.txt
-   ```
-
-3. Set up your environment variables in the `.env` file.
-
-## Usage
-
-To run the application, execute:
-
+### Using Docker Compose
 ```bash
-uvicorn src.main:app --reload
+# Clone the repository
+git clone https://github.com/clipthread/clipthread-server.git
+
+# Navigate to docker directory
+cd clipthread-server/docker
+
+# Start the server
+docker-compose up -d
 ```
 
-Visit `http://localhost:8000/docs` to access the interactive API documentation.
+### Using Systemd
+1. Install the package:
+```bash
+pip install clipthread-server
+```
 
-## Contributing
+2. Copy the systemd service file:
+```bash
+sudo cp systemd/clipthread-server.service /etc/systemd/system/
+```
 
-Contributions are welcome! Please open an issue or submit a pull request for any enhancements or bug fixes.
+3. Start the service:
+```bash
+sudo systemctl enable clipthread-server
+sudo systemctl start clipthread-server
+```
 
 ## License
+This project is licensed under the MIT License - see the LICENSE file for details.
 
-This project is licensed under the MIT License. See the LICENSE file for details.
+## Todo
+- [ ] Add authentication system
+- [ ] Implement encryption for clipboard content
+- [ ] Create API documentation
+- [ ] Add rate limiting
+- [ ] Implement clipboard content filtering
+
+## Client Applications
+- Desktop UI (Tkinter): [ui-tkinter](https://github.com/clipthread/ui-tkinter)
+- Core Library: [clipthread-core](https://github.com/clipthread/core)
+- Android App: [clipthread-android](https://github.com/clipthread/android)
